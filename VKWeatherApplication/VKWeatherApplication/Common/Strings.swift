@@ -10,6 +10,7 @@ import Foundation
 struct Strings {
     static let sevenDaysScreenTitle = "Прогноз на 7 дней"
     static let otherCitiesForecastButtonTitle = "В других городах"
+    static let refreshBarButton = "Узнать погоду"
     
     static let feelsLikeTitle = "Ощущается как:  "
     static let windSpeedTitle = "Скорость ветра:  "

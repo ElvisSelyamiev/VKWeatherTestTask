@@ -64,5 +64,4 @@ final class SevenDaysForcastTableViewCell: UITableViewCell {
         descriptionLabel.text = model.weather.last?.description
         dateLabel.text = model.dtTxt
     }
-
 }
