@@ -44,6 +44,8 @@ final class MainViewController: UIViewController {
         button.addTarget(nil, action: #selector(otherCitiesForecastButtonTap), for: .touchUpInside)
         return button
     }()
+    
+    private lazy var refreshButton = UIBarButtonItem(title: Strings.refreshBarButton , style: .plain, target: self, action: #selector(refreshButtonAction))
 
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
@@ -79,6 +81,7 @@ final class MainViewController: UIViewController {
     }
     
     private func settingUI() {
+        navigationItem.rightBarButtonItem = refreshButton
         contentView.backgroundColor = .white.withAlphaComponent(Constants.colorOpacity)
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = Constants.cornerRadius
@@ -155,6 +158,10 @@ final class MainViewController: UIViewController {
     
     @objc func otherCitiesForecastButtonTap() {
         mainViewControllerCoordinator?.runSearchCitiesForWeather()
+    }
+    
+    @objc func refreshButtonAction() {
+        locationManager.refreshUserCoordinate()
     }
 }
 

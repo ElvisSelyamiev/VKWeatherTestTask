@@ -9,5 +9,6 @@ import Foundation
 
 struct Images {
     static let backgroundImage = "backgroundImage"
-    static let info = "info.circle"
+    static let infoBarButton = "info.circle"
+    static let refreshBarButton = "exclamationmark.arrow.triangle.2.circlepath"
 }

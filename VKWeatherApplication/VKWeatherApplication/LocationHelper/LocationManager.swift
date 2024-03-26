@@ -28,25 +28,30 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
 
     override init() {
         super.init()
-        
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.pausesLocationUpdatesAutomatically = false
-        locationManager.startUpdatingLocation()
+        startLocationManager()
+    }
+    
+    private func startLocationManager() {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+            locationManager.pausesLocationUpdatesAutomatically = false
+            locationManager.startUpdatingLocation()
     }
     
     func locationDataRequest() {
         forecastDelegate?.getLocationDataForForecast(latitude: latitude, longitude: longitude)
+    }
+    
+    func refreshUserCoordinate() {
+        guard let delegate = mainDelegate else { return }
+        delegate.getLocationDataForMain(latitude: latitude, longitude: longitude)
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             latitude = location.coordinate.latitude
             longitude = location.coordinate.longitude
-            
-            guard let delegate = mainDelegate else { return }
-            delegate.getLocationDataForMain(latitude: latitude, longitude: longitude)
         }
     }
 

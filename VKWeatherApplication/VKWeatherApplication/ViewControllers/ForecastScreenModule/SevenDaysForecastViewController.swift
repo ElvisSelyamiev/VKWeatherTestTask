@@ -15,7 +15,7 @@ final class SevenDaysForecastViewController: UIViewController {
     
     var forecast = [Forecast]()
     
-    private lazy var infoButton = UIBarButtonItem(image: .init(systemName: Images.info), style: .plain, target: self, action: #selector(infoButtonAction))
+    private lazy var infoButton = UIBarButtonItem(image: .init(systemName: Images.infoBarButton), style: .plain, target: self, action: #selector(infoButtonAction))
     
     private let locationManager = LocationManager()
     
